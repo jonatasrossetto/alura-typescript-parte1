@@ -15,9 +15,10 @@ export class NegociacoesView {
             </thead>        
             <tbody> 
             ${negociacoes.lista().map(elemento => {
+            let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
             return `
                 <tr>
-                    <td>data</td>
+                    <td>${data}</td>
                     <td>${elemento.quantidade}</td>
                     <td>${elemento.valor}</td>
                 </tr>
