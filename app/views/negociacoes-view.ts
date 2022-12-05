@@ -1,12 +1,7 @@
 import { Negociacoes } from "../models/negociacoes.js";
+import { View } from "./view.js";
 
-export class NegociacoesView {
-
-    private elemento : HTMLElement;
-
-    constructor(selector:string){
-        this.elemento = document.querySelector(selector);
-    }
+export class NegociacoesView extends View<Negociacoes> {
 
     template(negociacoes:Negociacoes):string {
         //retorna o código html renderizado com dados do app
@@ -21,12 +16,18 @@ export class NegociacoesView {
             </thead>        
             <tbody> 
             ${negociacoes.lista().map(elemento=>{
-                let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
+                //let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
                 return `
                 <tr>
-                    <td>${data}</td>
-                    <td>${elemento.quantidade}</td>
-                    <td>${elemento.valor}</td>
+                    <td>
+                        ${new Intl.DateTimeFormat().format(elemento.data)}
+                    </td>
+                    <td>
+                        ${elemento.quantidade}
+                    </td>
+                    <td>
+                        ${elemento.valor}
+                    </td>
                 </tr>
                 `;
             }).join('')}
@@ -35,9 +36,9 @@ export class NegociacoesView {
         `
     }
 
-    update(negociacoes:Negociacoes):void {
-        const template = this.template(negociacoes);
-        console.log(template);
-        this.elemento.innerHTML = template;
-    }
+    // update(negociacoes:Negociacoes):void {
+    //     const template = this.template(negociacoes);
+    //     console.log(template);
+    //     this.elemento.innerHTML = template;
+    // }
 }

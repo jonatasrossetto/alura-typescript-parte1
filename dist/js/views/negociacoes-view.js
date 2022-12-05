@@ -1,7 +1,5 @@
-export class NegociacoesView {
-    constructor(selector) {
-        this.elemento = document.querySelector(selector);
-    }
+import { View } from "./view.js";
+export class NegociacoesView extends View {
     template(negociacoes) {
         //retorna o código html renderizado com dados do app
         return `
@@ -15,22 +13,23 @@ export class NegociacoesView {
             </thead>        
             <tbody> 
             ${negociacoes.lista().map(elemento => {
-            let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
+            //let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
             return `
                 <tr>
-                    <td>${data}</td>
-                    <td>${elemento.quantidade}</td>
-                    <td>${elemento.valor}</td>
+                    <td>
+                        ${new Intl.DateTimeFormat().format(elemento.data)}
+                    </td>
+                    <td>
+                        ${elemento.quantidade}
+                    </td>
+                    <td>
+                        ${elemento.valor}
+                    </td>
                 </tr>
                 `;
         }).join('')}
             </tbody>
         </table>
         `;
-    }
-    update(negociacoes) {
-        const template = this.template(negociacoes);
-        console.log(template);
-        this.elemento.innerHTML = template;
     }
 }
