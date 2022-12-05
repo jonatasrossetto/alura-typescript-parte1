@@ -3,7 +3,7 @@ import { View } from "./view.js";
 
 export class NegociacoesView extends View<Negociacoes> {
 
-    template(negociacoes:Negociacoes):string {
+    protected template(negociacoes:Negociacoes):string {
         //retorna o código html renderizado com dados do app
         return `
         <table class="table table-hover table-bordered">
