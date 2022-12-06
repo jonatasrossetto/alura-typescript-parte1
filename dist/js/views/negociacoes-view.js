@@ -1,7 +1,6 @@
 import { View } from "./view.js";
 export class NegociacoesView extends View {
     template(negociacoes) {
-        //retorna o código html renderizado com dados do app
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -13,7 +12,6 @@ export class NegociacoesView extends View {
             </thead>        
             <tbody> 
             ${negociacoes.lista().map(elemento => {
-            //let data = `${elemento.data.getDate()}-${elemento.data.getMonth()}-${elemento.data.getFullYear()}`;
             return `
                 <tr>
                     <td>

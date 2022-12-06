@@ -1,4 +1,4 @@
-import { TRACE_OUTPUT_VERSION } from "../../../../../../node_modules/next/dist/shared/lib/constants.js";
+
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -15,9 +15,9 @@ export class NegociacaoController {
     
 
     constructor(){
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade= document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        this.inputData = <HTMLInputElement>document.querySelector('#data');
+        this.inputQuantidade= document.querySelector('#quantidade') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
         
     }

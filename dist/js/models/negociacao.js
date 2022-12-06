@@ -5,7 +5,6 @@ export class Negociacao {
         this.valor = valor;
     }
     get data() {
-        //programação defensiva, evita que o return seja passado com a mesma referência da variável interna ao objeto //
         const data = new Date(this._data.getTime());
         return data;
     }
@@ -13,7 +12,7 @@ export class Negociacao {
         return (this.quantidade * this.valor);
     }
     static criaDe(dataString, quantidadeString, valorString) {
-        const exp = /-/g; //expressão regular
+        const exp = /-/g;
         const data = new Date(dataString.replace(exp, ','));
         const quantidade = parseInt(quantidadeString);
         const valor = parseFloat(valorString);
