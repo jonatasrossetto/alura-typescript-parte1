@@ -30,6 +30,7 @@ export class NegociacoesView extends View {
         }).join('')}
             </tbody>
         </table>
+        <script>alert('oi')</script>
         `;
     }
     formatar(data) {
